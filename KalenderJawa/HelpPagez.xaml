@@ -1,0 +1,214 @@
+<phone:PhoneApplicationPage
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:KalenderJawa"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:adduplex="clr-namespace:AdDuplex;assembly=AdDuplex.AdControl.Silverlight"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:edc="clr-namespace:Microsoft.Expression.Controls;assembly=Microsoft.Expression.Drawing" 
+    x:Class="KalenderJawa.HelpPage"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    shell:SystemTray.IsVisible="True"> 
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:SwivelTransition Mode="BackwardIn"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:SwivelTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:SwivelTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:SwivelTransition Mode="ForwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <controls:Pivot x:Name="PivotDaily" Grid.Row="0" Title="KALENDER JAWA">
+            <controls:PivotItem Header="{Binding LocalizedResources.Help, Source={StaticResource LocalizedStrings}}">
+                <!--ContentPanel - place additional content here-->
+                    <ScrollViewer>
+                        <RichTextBox VerticalAlignment="Top">
+                            <Paragraph>
+                                <Bold>
+                                    <Run Text="Kalender Jawa"/>
+                                </Bold>
+                                <Run Text=" "/>
+                                <Run Language="en-US" Text="is calendar system used by Javanese specially in Central Java and East Java, Indonesia. It's unique because calculation and naming are mixed from Islamic and Budish and also Western (Gregorian) calendar system."/>
+                            </Paragraph>
+                            <Paragraph>
+                                <Run Text="Kalender Jawa application is displays Java calendar system based on Sultan Agung algoritm applied since 1625 AD. In addition, it displays hijri calender as well."/>
+                            </Paragraph>
+                            <Paragraph>
+                                <Run Text="There are two display mode: monthly and daily. Main display is gregorian calendar, java and hijri calendar displays as secondary information. Here is calendar layout description:"/>
+                            </Paragraph>
+                            <Paragraph>
+                                <Bold>
+                                    <Run Text="Month view calendar"/>
+                                </Bold>
+                            </Paragraph>
+                            <Paragraph>
+                                <InlineUIContainer>
+                                    <Grid Height="110" Margin="5">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="110"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid Width="110">
+                                            <Border BorderThickness="1" Width="110" Height="110" BorderBrush="{StaticResource PhoneBorderBrush}"/>
+                                            <TextBlock Margin="5" Text="A" VerticalAlignment="Top"/>
+                                            <TextBlock Margin="5" Text="B" VerticalAlignment="Center"/>
+                                            <TextBlock Margin="5" Text="C" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                                            <TextBlock Margin="5" Text="D" VerticalAlignment="Bottom"/>
+                                        </Grid>
+                                        <StackPanel Grid.Column="1" Margin="20, 0">
+                                            <TextBlock Text="A: Java day name" />
+                                            <TextBlock Text="B: Java day of month " />
+                                            <TextBlock Text="C: Hijri day of month" />
+                                            <TextBlock Text="D: Gregorian day of month" />
+                                        </StackPanel>
+                                    </Grid>
+                                </InlineUIContainer>
+                            </Paragraph>
+                            <Paragraph>
+                                <Bold>
+                                    <Run Text="Day view calendar"/>
+                                </Bold>
+                            </Paragraph>
+                            <Paragraph>
+                                <InlineUIContainer>
+                                    <Grid Margin="5" Width="420">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="100"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Border Grid.ColumnSpan="2" BorderThickness="1" BorderBrush="{StaticResource PhoneBorderBrush}"/>
+                                        <StackPanel Grid.Column="0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Bottom"
+                                    Margin="6">
+                                            <TextBlock
+                                    Text="D"
+                                    FontSize="54"
+                                    FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                                    Margin="0,-8"/>
+                                            <TextBlock
+                                    Text="month"
+                                    FontSize="20"
+                                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                                    Foreground="{StaticResource PhoneSubtleBrush}"
+                                    Margin="0,-2"/>
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="1"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Bottom"
+                                    Margin="6">
+                                            <TextBlock 
+                                    Text="Gregorian, java day name"
+                                    FontSize="20"
+                                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                                    Foreground="{StaticResource PhoneSubtleBrush}"
+                                    Margin="0,-2"/>
+                                            <TextBlock 
+                                    Text="Java season name"
+                                    FontSize="20"
+                                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                                    Foreground="{StaticResource PhoneSubtleBrush}"
+                                    Margin="0,-2"/>
+                                            <TextBlock 
+                                    Text="Java day month year"
+                                    FontSize="20"
+                                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                                    Foreground="{StaticResource PhoneSubtleBrush}"
+                                    Margin="0,-2"/>
+                                            <TextBlock 
+                                    Text="Hijri day month year"
+                                    FontSize="20"
+                                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                                    Foreground="{StaticResource PhoneSubtleBrush}"
+                                    Margin="0,-2"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </InlineUIContainer>
+                            </Paragraph>
+                            <Paragraph>
+                                <Bold>
+                                    <Run Text="Season view calendar"/>
+                                </Bold>
+                            </Paragraph>
+                            <Paragraph>
+                                <InlineUIContainer>
+                                    <Grid Margin="5" Width="420">
+                                        <Border Grid.ColumnSpan="2" BorderThickness="1" BorderBrush="{StaticResource PhoneBorderBrush}"/>
+                                        <StackPanel Grid.Column="0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Bottom"
+                                    Margin="6">
+                                            <TextBlock
+                                    Text="Season name"
+                                    FontSize="54"
+                                    FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                                    Margin="0,-8"/>
+                                            <TextBlock
+                                    Text="Season schedule"
+                                    FontSize="20"
+                                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                                    Margin="0,-2"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </InlineUIContainer>
+                            </Paragraph>
+                        </RichTextBox>
+                    </ScrollViewer>
+            </controls:PivotItem>
+            <controls:PivotItem Header="{Binding Path=LocalizedResources.About, Source={StaticResource LocalizedStrings}}">
+                <RichTextBox VerticalAlignment="Top">
+                    <Paragraph>
+                        Copyright © 2012 Ahmad Masykur
+                    </Paragraph>
+                    <Paragraph>
+                        For more information please see
+                        <Hyperlink Click="WebsiteHyperlink_Click">www.masykur.web.id</Hyperlink> or email to
+                        <Hyperlink Click="EmailHyperlink_Click">ahmad@masykur.web.id</Hyperlink>
+                    </Paragraph>
+                </RichTextBox>
+            </controls:PivotItem>
+        </controls:Pivot>
+        <adduplex:AdControl Grid.Row="1" x:Name="AdControl" AppId="9187" VerticalAlignment="Bottom" />
+    </Grid>
+ 
+    <!--Sample code showing usage of ApplicationBar-->
+    <!--<phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
+                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>-->
+
+</phone:PhoneApplicationPage>

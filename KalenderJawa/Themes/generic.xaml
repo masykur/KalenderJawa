@@ -1,0 +1,30 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vmx="clr-namespace:System.Windows;assembly=System.Windows"
+    xmlns:local="clr-namespace:KalenderJawa.Controls"
+>   
+    <Style TargetType="local:Day">
+        <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+        <Setter Property="BorderThickness" Value="0,1,0,1"/>
+        <Setter Property="Template">
+                <Setter.Value>
+                <ControlTemplate TargetType="local:Day">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="{StaticResource PhoneBorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid Margin="3, -4">
+                            <TextBlock DataContext="{TemplateBinding Date}" Text="{Binding Day}" FontSize="{StaticResource PhoneFontSizeLarge}" HorizontalAlignment="Left" VerticalAlignment="Bottom" />
+                            <TextBlock DataContext="{TemplateBinding JavaDate}" Text="{Binding Day}" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                            <TextBlock DataContext="{TemplateBinding HijriDate}" Text="{Binding Day}" HorizontalAlignment="Right" VerticalAlignment="Bottom" />
+                            <TextBlock Text="{TemplateBinding PasaranLowerString}" />
+
+                            <ContentPresenter x:Name="ContentContainer"
+                                              Content="{TemplateBinding Content}"
+                                              ContentTemplate="{TemplateBinding ContentTemplate}"                                              
+                                              />
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>    
+</ResourceDictionary>
